@@ -1,0 +1,65 @@
+<html>
+	<head></head>
+	<body>
+		<h1>Matrix Editor Output</h1>
+		<p>Paste this array into the 'patterns' array before the final closing curly brace. Make sure to add a comma after the previous closing curly brace, add 1 to NUMBER_OF_PATTERNS, and increase the first index of 'patterns' by 1.</p>
+		<pre id="output" style="background-color: lightgrey;"></pre>
+	</body>
+	<script>
+		var matrix = JSON.parse(window.localStorage.getItem("matrix"));
+		var redPalette = JSON.parse(window.localStorage.getItem("redPalette"));
+		var greenPalette = JSON.parse(window.localStorage.getItem("greenPalette"));
+		var bluePalette = JSON.parse(window.localStorage.getItem("bluePalette"));
+		var output = "\t{\n\t\t{";
+		for(var y = 0; y<32; y++){
+			for(var x = 0; x<32; x++){
+				output+="0x0"+matrix[y][x].toString(16).toUpperCase();
+				if(x != 31){
+					output+=",";
+				}else{
+					output+="},\n\t\t{";
+				}
+			}
+		}
+		for(var i = 0; i<32; i++){
+			output += "0x"
+			var r = redPalette[i].toString(16).toUpperCase();
+			if(r.length == 1){
+				output += "0";
+			}
+			output+=r;
+			if(i != 31){
+				output+=",";
+			}else{
+				output+="},\n\t\t{";
+			}
+		}
+		for(var i = 0; i<32; i++){
+			output += "0x"
+			var g = greenPalette[i].toString(16).toUpperCase();
+			if(g.length == 1){
+				output += "0";
+			}
+			output+=g;
+			if(i != 31){
+				output+=",";
+			}else{
+				output+="},\n\t\t{";
+			}
+		}
+		for(var i = 0; i<32; i++){
+			output += "0x"
+			var b = bluePalette[i].toString(16).toUpperCase();
+			if(b.length == 1){
+				output += "0";
+			}
+			output+=b;
+			if(i != 31){
+				output+=",";
+			}else{
+				output+="}\n\t}";
+			}
+		}
+		document.getElementById("output").innerHTML = output;
+	</script>
+</html>

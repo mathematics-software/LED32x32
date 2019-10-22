@@ -1,0 +1,284 @@
+<html>
+	<head>
+		<style>
+			div#matrix button{
+				width: 15px;
+				height: 15px;
+				margin: 3px;
+				border: none;
+				background-color: black;
+			}
+			div#matrix button:hover{
+				background-color: lightgray;
+			}
+			.modal{
+				position: absolute;
+				left:30%;
+				width:40%;
+				min-height:40%;
+				top: 30%;
+				margin: 0;
+				padding: 0;
+				z-index: 100;
+				display: none;
+				background-color: darkgray;
+			}
+			.color{
+				width: 25px;
+				height: 25px;
+				border: none;
+				background-color: black;
+			}
+			
+			.modal .buttons{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+			
+			.labels{
+				float: left;
+			}
+			.inputs{
+				float: left;
+				clear: right;
+			}
+			.dummyslider.first{
+				margin-top: 0.5em;
+			}
+			.dummyslider{
+				width: 1px;
+				visibility: hidden;
+				padding: 0;
+				height: 1em;
+				margin-top: 0;
+				border: 0;
+			}
+			textarea{
+				width: 90%;
+				margin: auto;
+				display: block;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<h1>32x32 LED Display</h1>
+		<div id="matrix">
+		<div class="r0"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r1"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r2"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r3"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r4"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r5"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r6"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r7"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r8"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r9"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r10"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r11"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r12"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r13"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r14"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r15"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r16"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r17"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r18"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r19"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r20"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r21"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r22"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r23"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r24"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r25"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r26"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r27"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r28"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r29"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r30"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		<div class="r31"><button class="c0"></button><button class="c1"></button><button class="c2"><button class="c3"></button><button class="c4"></button><button class="c5"></button><button class="c6"></button><button class="c7"></button><button class="c8"></button><button class="c9"></button><button class="c10"></button><button class="c11"></button><button class="c12"></button><button class="c13"></button><button class="c14"></button><button class="c15"></button><button class="c16"></button><button class="c17"></button><button class="c18"></button><button class="c19"></button><button class="c20"></button><button class="c21"></button><button class="c22"></button><button class="c23"></button><button class="c24"></button><button class="c25"></button><button class="c26"></button><button class="c27"></button><button class="c28"></button><button class="c29"></button><button class="c30"><button class="c31"></button></div>
+		</div>
+		<button id="fill">Fill Background</button>
+		<button id="export">Export Byte Array</button>
+		<button id="import">Import Byte Array</button>
+		<h2>Pen Color</h2>
+		<div id="colorbuttons">
+			<button class="color" data-color="0" style="margin-left: 10px; background-color: rgb(0,0,0);"></button>
+	    </div>
+		<button id="newcolor">New Color</button>
+		
+		<div class="modal" id="palettemodal">
+			<h2>Create a new pen color!</h2>
+			<div class="labels">
+				Red:<input type="range" min="0" max="1" class="dummyslider first"><br>
+				Green:<input type="range" min="0" max="1" class="dummyslider"><br>
+				Blue:<input type="range" min="0" max="1" class="dummyslider"><br>
+				Result: 
+			</div>
+			<div class="inputs">
+				<!-- change max attr to 15 if using 4 bit color output -->
+				<input type="range" min="0" max="255" value="0" id="red"><br>
+				<input type="range" min="0" max="255" value="0" id="green"><br>
+				<input type="range" min="0" max="255" value="0" id="blue"><br>
+				<div class="color" id="colorsample"></div>
+			</div>
+			<div class="buttons">
+				<button class="modalclose">Cancel</button><button id="addtopalette">Add to Palette</button>
+			</div>
+		</div>
+		
+		<div class="modal" id="importmodal">
+			<h2>Import a new byte array</h2>
+			<label for="arduino">Arduino Code</label><br>
+			<textarea name="arduino" id="arduino" rows="10"></textarea>
+			<br>
+			<input type="radio" name="bits" id="input_4_bit_color" checked>4-Bit Color
+			<input type="radio" name="bits">8-Bit Color
+			<!--<label for="chooseimage">Bitmap Image</label>
+			<input name="chooseimage" id="chooseimage" type="file" accept=".bmp">-->
+			<div class="buttons">
+				<button class="modalclose">Cancel</button>
+				<button id="completearduinoimport">Import</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.penColor = "rgb(0,0,0)";
+		document.colorIndex = 1;
+		document.red = "0";
+		document.green = "0";
+		document.blue = "0";
+		document.redArray   = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		document.greenArray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		document.blueArray  = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		document.pixels = Array(32).fill(0).map(x => Array(32).fill(0));
+		var newimport = Array(35).fill(0).map(x => Array(32).fill(0));
+
+
+		$('#newcolor').click(function(){
+			document.getElementById('palettemodal').style.display = 'block';
+		});
+	
+		$('#red,#green,#blue').change(function(){
+			document.red = document.getElementById("red").value;
+			document.green = document.getElementById("green").value;
+			document.blue = document.getElementById("blue").value;
+			//4 bit output
+			//document.newSampleColor = "rgb(" + ((document.red/15)*255) + "," + ((document.green/15)*255) + "," + ((document.blue/15)*255) +")";
+			//8 bit output
+			document.newSampleColor = "rgb(" + document.red + "," + document.green + "," + document.blue + ")";
+			document.getElementById('colorsample').style.backgroundColor = document.newSampleColor;
+		});
+		
+		$('.modalclose').click(function(){
+			$(this).parent().parent().css("display","none");
+		});
+
+		
+		$('#addtopalette').click(function(){
+			document.getElementById('palettemodal').style.display = "none";
+			document.getElementById('colorbuttons').innerHTML += "<button class='color' data-color='" + document.colorIndex + "' style='margin-left: 10px; background-color:" + document.newSampleColor + ";'></button>";
+			if(document.colorIndex < 32){
+				document.redArray[document.colorIndex] = Number(document.red);
+				document.greenArray[document.colorIndex] = Number(document.green);
+				document.blueArray[document.colorIndex] = Number(document.blue);
+				document.colorIndex++;
+			}else{
+				alert("You cannot have more than 32 colors. This color has not been added to the palette.");
+			}
+		});
+		
+
+		
+		document.getElementById('colorbuttons').addEventListener('click', function(e){
+			document.penColor = e.target.style.backgroundColor;
+			document.penColorCode = e.target.getAttribute("data-color");
+		});
+		document.getElementById('fill').addEventListener('click', function(e){
+			for(var y=0; y<32; y++){
+				for(var x=0; x<32; x++){
+					var pixel = document.querySelector(".r" + y + " .c" + x);
+					pixel.style.backgroundColor = document.penColor;
+					document.pixels[y][x] = document.penColorCode;
+				}
+			}
+		});
+		
+		document.getElementById('matrix').addEventListener('click',function(e){
+			var classname = e.target.className;
+			if(classname.match('c') != null){
+				e.target.style.backgroundColor = document.penColor;
+				document.pixels[Number(e.target.parentNode.className.substring(1))][Number(classname.substring(1))] = Number(document.penColorCode);
+			}
+		});
+		
+		$('#export').click(function(){
+			window.localStorage.setItem("matrix", JSON.stringify(document.pixels));
+			window.localStorage.setItem("redPalette", JSON.stringify(document.redArray));
+			window.localStorage.setItem("greenPalette", JSON.stringify(document.greenArray));
+			window.localStorage.setItem("bluePalette", JSON.stringify(document.blueArray));
+			window.open("output.html");
+		});
+		
+		$('#import').click(function(){
+			document.getElementById("importmodal").style.display = "block";
+		});
+		
+
+		$('#completearduinoimport').mouseup(function(){
+			document.getElementById('importmodal').style.display = "none";
+			var array = document.getElementById("arduino").value.toString().split('{');
+			var y = 0;
+			var maxnumber = 0;
+			for(var i = 0; i < array.length; i++){
+				var subarray = array[i].split(',');
+				var x = 0;
+				var changed = false;
+				for(var j = 0; j < subarray.length; j++){
+					var number = NaN;
+					console.log(subarray[j].match(/x/i));
+					if(subarray[j].match(/x/i) != null){
+						number = parseInt(subarray[j].replace(/[^0123456789abcdefABCDEFxX]/g,""),16);
+					}else if(subarray[j].match(/\d/) != null){
+						number = Number(subarray[j].replace(/[^0123456789]/g,""));
+					}
+					if(!isNaN(number) && x < 32 && y < 35){
+						newimport[y][x] = number;
+						if(number > maxnumber && y < 32){
+							maxnumber = number;
+						}
+						x++;
+						changed = true;
+					}
+				}
+				if(changed){
+					y++;
+				}
+			}
+			document.getElementById('colorbuttons').innerHTML = "";
+			document.colorIndex = 1;
+			for(var i = 0; i <= maxnumber; i++){
+				//If importing in 4 bit color:
+				if(document.getElementById("input_4_bit_color").checked){
+				  document.getElementById('colorbuttons').innerHTML += "<button class='color' data-color='" + document.colorIndex + "' style='margin-left: 10px; background-color: rgb(" + 255*(newimport[32][i]/15) + "," + 255*(newimport[33][i]/15) + "," + 255*(newimport[34][i]/15) + ");'></button>";
+				  document.redArray[i] = 255*(newimport[32][i]/15);
+				  document.greenArray[i] = 255*(newimport[33][i]/15);
+				  document.blueArray[i] = 255*(newimport[34][i]/15);
+				}else{
+				  document.getElementById('colorbuttons').innerHTML += "<button class='color' data-color='" + document.colorIndex + "' style='margin-left: 10px; background-color: rgb(" + newimport[32][i] + "," + newimport[33][i] + "," + newimport[34][i] + ");'></button>";
+				  document.redArray[i] = newimport[32][i];
+				  document.greenArray[i] = newimport[33][i];
+				  document.blueArray[i] = newimport[34][i];
+				}
+				document.colorIndex++;
+			} 
+			for(var y = 0; y < 32; y++){
+				for(var x = 0; x < 32; x++){
+					var pens = document.querySelectorAll("#colorbuttons button");
+					document.querySelector(".r" + y + " .c" + x).style.backgroundColor = pens[newimport[y][x]].style.backgroundColor;
+					document.pixels[y][x] = pens[newimport[y][x]].getAttribute("data-color");
+				}
+			}
+		});
+	</script>
+</html>
